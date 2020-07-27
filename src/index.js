@@ -1,5 +1,4 @@
 import {createStore} from 'redux';
-import {act} from 'react-dom/test-utils';
 const form = document.querySelector('form');
 const input = document.querySelector('input');
 const ul = document.querySelector('ul');
@@ -8,9 +7,10 @@ const ADD_TODO = 'ADD_TODO';
 const DELETE_TODO = 'DELETE_TODO';
 
 const reducer = (state = [], action) => {
+  console.log(state);
   switch (action.type) {
     case ADD_TODO:
-      return [];
+      return [...state, {text: action.text, id: Date.now()}];
     case DELETE_TODO:
       return [];
     default:
